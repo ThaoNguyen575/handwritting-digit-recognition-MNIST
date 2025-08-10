@@ -19,19 +19,25 @@ MNIST bao gồm **60,000 ảnh huấn luyện** và **10,000 ảnh kiểm thử*
 ## 3. Mô hình
 - **Thuật toán:** Convolutional Neural Network (CNN)  
 - **Thư viện:** TensorFlow / Keras
-- **Cấu trúc cơ bản:**
-  - 3 lớp Convolution (kernel 3×3, stride 1, padding 0) + MaxPooling (2×2)
-  - Flatten layer
-  - Dense layer 64 nodes (ReLU)
-  - Dense layer 32 nodes (ReLU)
-  - Output layer 10 nodes (Softmax) – phân loại 10 chữ số (0–9)
+## Kiến trúc mô hình
+- 3 lớp tích chập (`Conv2D`) với 64 bộ lọc kích thước 3x3, mỗi lớp theo sau là hàm kích hoạt ReLU và lớp MaxPooling (2x2).
+- Lớp Flatten để chuyển đổi bản đồ đặc trưng 2 chiều thành vector 1 chiều.
+- Hai lớp fully connected (`Dense`) với hàm kích hoạt ReLU, gồm 64 và 32 đơn vị.
+- Lớp đầu ra gồm 10 đơn vị với hàm kích hoạt softmax để phân loại đa lớp.
+
+## Huấn luyện
+- Hàm mất mát: Sparse Categorical Crossentropy.
+- Bộ tối ưu: Adam.
+- Số epoch: 5.
+- Tỷ lệ dữ liệu dùng để kiểm tra chéo (validation): 30% dữ liệu huấn luyện.
+
 
 ---
 
 ## 4. Kết quả
 - **Độ chính xác (Accuracy) trên tập kiểm thử:** ~97%
 - **Loss:** ~0.07
-- **Mô hình dự đoán đúng gần như toàn bộ chữ số viết tay trong tập test.
+- **Mô hình dự đoán đúng gần như toàn bộ chữ số viết tay trong tập test.**
 
 ---
 
